@@ -28,7 +28,7 @@ CLASS lhc_ZFI003_DD_Behaviour IMPLEMENTATION.
 
   METHOD kur_farki.
     DATA lv_index_item TYPE int4.
-
+*for request   for re
     IF keys IS INITIAL.
       APPEND VALUE #( dummy = 1 ) TO failed-behaviour.
 
@@ -109,6 +109,8 @@ CLASS lhc_ZFI003_DD_Behaviour IMPLEMENTATION.
       documentreferenceid = ls_data-%param-doc_reference
       TaxDeterminationDate = ls_data-%param-post_date
 
+*FOR COMMIT
+
       _aritems = COND #( WHEN ls_data-%param-customer IS NOT INITIAL
                          THEN VALUE #( ( GLAccountLineItem = '000001'
                                          customer          = ls_data-%param-customer
@@ -125,10 +127,10 @@ CLASS lhc_ZFI003_DD_Behaviour IMPLEMENTATION.
 *                                                                    currency = ls_data-%param-currency )
                                                                       ( currencyrole           = '30'
                                                                         journalentryitemamount = 0
-                                                                        currency               = 'EUR' )
+                                                                        currency               = 'USD' )
                                                                       ( currencyrole           = 'Z0'
                                                                         journalentryitemamount = 0
-                                                                        currency               = 'USD' )
+                                                                        currency               = 'EUR' )
 )
                                        DocumentItemText = ls_data-%param-doc_item_text
                                           ) ) )
@@ -148,10 +150,10 @@ CLASS lhc_ZFI003_DD_Behaviour IMPLEMENTATION.
 *                                                                    currency = ls_data-%param-currency )
                                                                         ( currencyrole           = '30'
                                                                           journalentryitemamount = 0
-                                                                          currency               = 'EUR' )
+                                                                          currency               = 'USD' )
                                                                         ( currencyrole           = 'Z0'
                                                                           journalentryitemamount = 0
-                                                                          currency               = 'USD' )
+                                                                          currency               = 'EUR' )
                                                                           )
                                        DocumentItemText = ls_data-%param-doc_item_text
                                           ) ) )
@@ -176,10 +178,10 @@ CLASS lhc_ZFI003_DD_Behaviour IMPLEMENTATION.
 *                                                         currency = ls_data-%param-currency )
                                                           ( currencyrole           = '30'
                                                             journalentryitemamount = 0
-                                                            currency               = 'EUR' )
+                                                            currency               = 'USD' )
                                                           ( currencyrole           = 'Z0'
                                                             journalentryitemamount = 0
-                                                            currency               = 'USD' )
+                                                            currency               = 'EUR' )
                                                             )
                             DocumentItemText    = ls_item-doc_item_text
                             AssignmentReference = ls_item-assign_ref
